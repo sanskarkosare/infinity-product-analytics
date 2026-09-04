@@ -2,8 +2,10 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
-conn = sqlite3.connect(r'D:\Sk Work\Placement-Things\Machine Learning\ML projects\infinity-agent\infinity_logs.db')
+DB_PATH = os.environ.get('INFINITY_DB_PATH', 'infinity_logs.db')
+conn = sqlite3.connect(DB_PATH)
 df = pd.read_sql("SELECT * FROM interaction_logs", conn)
 conn.close()
 
